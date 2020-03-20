@@ -26,8 +26,6 @@ class _AvatarState extends State<Avatar> {
             MaterialPageRoute(builder: (context) => SecondRoute()),
           );
           setState(() {
-
-
             _clickState = !_clickState;
           });
         },

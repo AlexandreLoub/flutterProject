@@ -5,8 +5,7 @@ import 'avatar.dart';
 final kTextStyle = TextStyle(
   fontFamily: 'Source Sans Pro',
   color: Colors.teal.shade100,
-  fontSize: 20,
-  letterSpacing: 2.5,
+  fontSize: 15,
   fontWeight: FontWeight.bold,
 );
 
@@ -14,24 +13,29 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.blueAccent,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Avatar(),
+            //Avatar(),
             Text(
-              'Nicolas Thing-leoh',
+              'My Beatiful Gallery',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 40.0,
+                fontSize: 35.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Pacifico',
               ),
             ),
             Text(
-              'MOBILE DEVELOPPER',
-              style: kTextStyle,
+              'STORE YOUR PICTURES',
+              style: TextStyle(
+                fontFamily: 'Source Sans Pro',
+                color: Colors.teal.shade100,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(
               height: 20,
@@ -40,42 +44,83 @@ class SplashScreen extends StatelessWidget {
                 color: Colors.teal.shade100,
               ),
             ),
-            Card(
-              margin: EdgeInsets.symmetric(
+
+
+            Padding(
+              padding: EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
-              child: ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  color: Colors.teal,
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  focusColor: Colors.white,
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white70),
                 ),
-                title: Text(
-                  '+33 7 83 67 91 51',
-                  style: kTextStyle.copyWith(
-                    color: Colors.teal.shade900,
-                    fontWeight: FontWeight.normal,
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 25,
+                vertical: 10,
+              ),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  focusColor: Colors.white,
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.white70),
+                ),
+              ),
+            ),
+
+            SizedBox.fromSize(
+              size: Size(200, 40), // button width and height
+
+              child: Material(
+                color: Colors.lightGreen, // button color
+                child: InkWell(
+                  splashColor: Colors.blueAccent, // splash color
+                  onTap: () {}, // button pressed
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      // icon
+                      Text('Valider',
+                          style: kTextStyle.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                          )) // text
+                    ],
                   ),
                 ),
               ),
             ),
-            Card(
-              margin: EdgeInsets.symmetric(
-                horizontal: 25,
-                vertical: 10,
-              ),
-              child: ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: Colors.teal,
-                ),
-                title: Text(
-                  'nicolas@blackfoot.io',
-                  style: kTextStyle.copyWith(
-                    color: Colors.teal.shade900,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+            Text(
+              'Create Account Now',
+              style: kTextStyle.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.normal,
               ),
             ),
           ],

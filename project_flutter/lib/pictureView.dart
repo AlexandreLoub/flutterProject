@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'gridView.dart';
 
 class SecondRoute extends StatefulWidget {
   @override
   _SecondRouteState createState() => _SecondRouteState();
-
-
 
 }
 
 class _SecondRouteState extends State<SecondRoute> {
 
 
-  File imageFile;
+  List<File> imageFile = [];
 
   _openGallery(BuildContext context) async {
     var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
-      imageFile = picture;
+      imageFile[imageFile.length] = picture;
     });
     Navigator.of(context).pop();
   }
@@ -27,7 +26,7 @@ class _SecondRouteState extends State<SecondRoute> {
   _openCamera(BuildContext context) async {
     var picture = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      imageFile = picture;
+      imageFile[imageFile.length] = picture;
     });
     Navigator.of(context).pop();
   }
@@ -63,7 +62,7 @@ class _SecondRouteState extends State<SecondRoute> {
     if (imageFile == null) {
       return Text("Pas d'image selectionnée");
     } else {
-      return Image.file(imageFile, width: 400, height: 400);
+      return Image.file(imageFile[imageFile.length], width: 400, height: 400);
     }
   }
 
@@ -84,6 +83,8 @@ class _SecondRouteState extends State<SecondRoute> {
 
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +96,8 @@ class _SecondRouteState extends State<SecondRoute> {
               ProfileView(),
               _runImageView(),
               RaisedButton(onPressed: (){
+
+
                 _showChoice(context);
               }, child: Text("Seletionner une image"),
               ),

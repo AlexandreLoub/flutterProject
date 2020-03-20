@@ -15,3 +15,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//return Text(Provider)
+//end widjet build
+//return Text(Provider.of<Data>(context).value)
