@@ -10,13 +10,15 @@ class GalleryViewController extends StatefulWidget {
 
 class _GalleryViewControllerState extends State<GalleryViewController> {
 
-
+  List<File> test = [];
   File imageFile;
 
   _openGallery(BuildContext context) async {
     var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
       imageFile = picture;
+      test.add(picture);
+      print(test);
     });
     Navigator.of(context).pop();
   }
@@ -26,6 +28,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
     var picture = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
       imageFile = picture;
+      test.add(picture);
     });
     Navigator.of(context).pop();
   }
@@ -68,28 +71,42 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       body: Container(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                itemCount: test.length,
+            itemBuilder: (BuildContext context, int Index) {
+              return Image.file(test[Index]);
+      }
+        )
 
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _runImageView(),
-              RaisedButton(onPressed: (){
+            ),
+            FlatButton(
+              color: Colors.blueAccent,
 
-                _showChoice(context);
-              }, child: Text("Seletionner une image"),
+              padding: EdgeInsets.only(
+                left: 10,
+                right: 20,
+                top: 1,
+                bottom: 2,
               ),
-
-
-            ],
-          ),
+              child: Text("ee"),
+              onPressed: () {
+                _showChoice(context);
+              },
+            )
+          ],
         ),
+
+
+
+
 
       ),
 
@@ -98,4 +115,34 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 
   }
 
-
+//
+//child: Center(
+//child: Column(
+////mainAxisAlignment: MainAxisAlignment.spaceAround,
+//children: <Widget>[
+//_runImageView(),
+//ListView.builder(
+//scrollDirection: Axis.vertical,
+//itemCount: test.length,
+//itemBuilder: (BuildContext context, int index)  {
+//if (test != null) {
+//return Image.file(test[index]);
+//}
+//return Flexible(child: new ListView(
+//padding: new EdgeInsets.symmetric(vertical: 8.0),
+//children: <Widget>[
+//Text('zozo')
+//],
+//)
+//);
+//}
+//),
+//
+//RaisedButton(onPressed: (){
+//_showChoice(context);
+//}, child: Text("Seletionner une image"),
+//),
+//
+//
+//],
+//),

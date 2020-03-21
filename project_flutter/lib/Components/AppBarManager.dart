@@ -33,6 +33,7 @@ class _AppBarManagerState extends State<AppBarManager> {
         title: Text('MyGalleryApp'),
         automaticallyImplyLeading: false,
       ),
+
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped, // new
