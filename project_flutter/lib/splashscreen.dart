@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:project_flutter/pictureView.dart';
+import 'package:project_flutter/viewsManager.dart';
 import 'avatar.dart';
 
 final kTextStyle = TextStyle(
@@ -95,7 +96,7 @@ class SplashScreen extends StatelessWidget {
             ),
 
             SizedBox.fromSize(
-              size: Size(200, 40), // button width and height
+              size: Size(200, 90), // button width and height
 
               child: Material(
                 color: Colors.lightGreen, // button color
@@ -106,6 +107,15 @@ class SplashScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       // icon
+                      RaisedButton(
+                        child: Text('Open route'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => viewsManager()),
+                          );
+                        },
+                      ),
                       Text('Valider',
                           style: kTextStyle.copyWith(
                             color: Colors.white,

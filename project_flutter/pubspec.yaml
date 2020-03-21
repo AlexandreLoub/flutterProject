@@ -7,9 +7,13 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  camera:
+  path_provider:
+  path:
   image_picker:
   flutter:
     sdk: flutter
+
 
   cupertino_icons: ^0.1.2
 
