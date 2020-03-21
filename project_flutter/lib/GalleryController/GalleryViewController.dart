@@ -9,7 +9,7 @@ class GalleryViewController extends StatefulWidget {
 }
 
 class _GalleryViewControllerState extends State<GalleryViewController> {
-  List<File> test;
+  List<File> test = <File>[];
   File imageFile;
 
   Future<void>_openGallery(BuildContext context) async {
