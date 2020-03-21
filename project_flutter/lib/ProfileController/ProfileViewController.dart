@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
-import '../Components/avatar.dart';
 
 class ProfileViewController extends StatefulWidget {
   @override
@@ -14,23 +13,23 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
       body: SafeArea(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              CircleAvatar(
+          const CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage("https://i.imgur.com/qlxHxqW.jpg"),
+                backgroundImage: NetworkImage('https://i.imgur.com/qlxHxqW.jpg'),
                 //backgroundColor: Colors.transparent,
               ),
-          Text(
-            "zizi"
+          const Text(
+            'zizi'
           ),
           FlatButton(
             onPressed: () {
-              print("logout presed");
-              Navigator.push(
+              print('logout presed');
+              Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute(builder: (context) => LoginViewController()),
+                MaterialPageRoute<dynamic>(builder: (BuildContext context) => LoginViewController()),
               );
             },
-            child: Text("Logout"),
+            child: const Text('Logout'),
           ),
         ]),
       ),
@@ -38,14 +37,13 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
   }
 }
 
-Widget ProfileView() {
-  //TODO
+Widget profileView() {
   return Column(
     children: <Widget>[
-      Text("Hi User"),
+      const Text('Hi User'),
       CircleAvatar(
         radius: 50,
-        backgroundImage: NetworkImage("https://i.imgur.com/qlxHxqW.jpg"),
+        backgroundImage: const NetworkImage('https://i.imgur.com/qlxHxqW.jpg'),
         backgroundColor: Colors.transparent,
       ),
     ],

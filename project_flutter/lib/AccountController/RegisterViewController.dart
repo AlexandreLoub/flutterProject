@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_flutter/Components/AppBarManager.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
 
 class RegisterViewController extends StatefulWidget {
@@ -45,7 +44,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
 
 
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
@@ -53,7 +52,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   disabledBorder: OutlineInputBorder(
@@ -69,7 +68,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
@@ -77,7 +76,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   disabledBorder: OutlineInputBorder(
@@ -93,7 +92,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
@@ -101,7 +100,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   disabledBorder: OutlineInputBorder(
@@ -117,14 +116,14 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
             ),
 
             SizedBox.fromSize(
-              size: Size(200, 40), // button width and height
+              size: const Size(200, 40), // button width and height
 
               child: Material(
                 color: Colors.lightGreen, // button color
                 child: InkWell(
                   //splashColor: Colors.blueAccent, // splash color
                   onTap: () {
-                    print("register request");
+                    print('register request');
                   }, // button pressed
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -132,7 +131,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
                       // icon
 
                       Text('Create',
-                          style: BasicTextStyle.copyWith(
+                          style: basicTextStyle.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.normal,
                           )) // text
@@ -145,15 +144,15 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
               child: Text(
                   'Already got an account ?\nClick here to login',
                   textAlign: TextAlign.center,
-                  style: BasicTextStyle.copyWith(
+                  style: basicTextStyle.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.normal,
                   )),
 
               onTap: () {
-                Navigator.push(
+                Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginViewController()),
+                  MaterialPageRoute<dynamic>(builder: (BuildContext context) => LoginViewController()),
                 );
               },
             ),
@@ -166,7 +165,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
   }
 }
 
-final BasicTextStyle = TextStyle(
+final TextStyle basicTextStyle = TextStyle(
   fontFamily: 'Source Sans Pro',
   color: Colors.teal.shade100,
   fontSize: 15,

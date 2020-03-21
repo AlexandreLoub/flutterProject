@@ -21,7 +21,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
               'My Beatiful Gallery',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 35.0,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Pacifico',
               ),
@@ -45,7 +45,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
 
 
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
@@ -53,7 +53,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   disabledBorder: OutlineInputBorder(
@@ -69,7 +69,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 25,
                 vertical: 10,
               ),
@@ -77,7 +77,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   disabledBorder: OutlineInputBorder(
@@ -93,16 +93,16 @@ class _LoginViewControllerState extends State<LoginViewController> {
             ),
 
             SizedBox.fromSize(
-              size: Size(200, 40), // button width and height
+              size: const Size(200, 40), // button width and height
 
               child: Material(
                 color: Colors.lightGreen, // button color
                 child: InkWell(
                   //splashColor: Colors.blueAccent, // splash color
                   onTap: () {
-                    Navigator.push(
+                    Navigator.push<dynamic>(
                       context,
-                      MaterialPageRoute(builder: (context) => AppBarManager()),
+                      MaterialPageRoute<dynamic>(builder: (BuildContext context) => AppBarManager()),
                     );
                   }, // button pressed
                   child: Column(
@@ -111,7 +111,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
                       // icon
 
                       Text('Valider',
-                          style: BasicTextStyle.copyWith(
+                          style: basicTextStyle.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.normal,
                           )) // text
@@ -123,15 +123,15 @@ class _LoginViewControllerState extends State<LoginViewController> {
             InkWell(
               child: Text(
                   'Create Account Now',
-                  style: BasicTextStyle.copyWith(
+                  style: basicTextStyle.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.normal,
                   )),
 
               onTap: () {
-                Navigator.push(
+                Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterViewController()),
+                  MaterialPageRoute<dynamic>(builder: (BuildContext context) => RegisterViewController()),
                 );
               },
             ),
@@ -144,7 +144,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
   }
 }
 
-final BasicTextStyle = TextStyle(
+final TextStyle basicTextStyle = TextStyle(
   fontFamily: 'Source Sans Pro',
   color: Colors.teal.shade100,
   fontSize: 15,

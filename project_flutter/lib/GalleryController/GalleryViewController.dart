@@ -1,6 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
+
 
 class GalleryViewController extends StatefulWidget {
   @override
@@ -8,12 +9,12 @@ class GalleryViewController extends StatefulWidget {
 }
 
 class _GalleryViewControllerState extends State<GalleryViewController> {
-  List<File> test = [];
+  List<File> test;
   File imageFile;
 
-  _openGallery(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
-    this.setState(() {
+  Future<void>_openGallery(BuildContext context) async {
+    final File picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
       imageFile = picture;
       test.add(picture);
       print(test);
@@ -21,9 +22,9 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
     Navigator.of(context).pop();
   }
 
-  _openCamera(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
-    this.setState(() {
+  Future<void> _openCamera(BuildContext context) async {
+    final File picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
       imageFile = picture;
       test.add(picture);
     });
@@ -35,21 +36,21 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Make Choice"),
+            title: const Text('Make Choice'),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   GestureDetector(
-                    child: Text("Gallery"),
+                    child: const Text('Gallery'),
                     onTap: () {
                       _openGallery(context);
                     },
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                   ),
                   GestureDetector(
-                    child: Text("Camera"),
+                    child: const Text('Camera'),
                     onTap: () {
                       _openCamera(context);
                     },
@@ -61,32 +62,37 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
         });
   }
 
-  Widget _runImageView() {
-    if (imageFile == null) {
-      return Text("Pas d'image selectionnée");
-    } else {
-      return Image.file(imageFile, width: 400, height: 400);
-    }
-  }
+//  Widget _runImageView() {
+//    if (imageFile == null) {
+//      return const Text("Pas d'image selectionnée");
+//    } else {
+//      return Image.file(imageFile, width: 400, height: 400);
+//    }
+//  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(4),
+        padding: const EdgeInsets.all(4),
         child: Column(
           children: <Widget>[
             Expanded(
                 child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 4.0,
                         mainAxisSpacing: 4.0),
                     itemCount: test.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Image.file(
+                      return GestureDetector(
+                          child: Image.file(
                         test[index],
                         fit: BoxFit.fill,
+                          ),
+                        onTap: () {
+                            print(index);
+                        },
                       );
                     })
 //                child: ListView.builder(
@@ -96,7 +102,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 //                    })
                 ),
             Container(
-              padding: EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 4),
               width: double.infinity,
 
               height: 40,
@@ -104,8 +110,8 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 
                 textColor: Colors.white,
                 color: Colors.blueAccent,
-                padding: EdgeInsets.all(0),
-                child: Text('Take pictures'),
+                padding: const EdgeInsets.all(0),
+                child: const Text('Take pictures'),
                 onPressed: () {
                   _showChoice(context);
                 },
@@ -143,7 +149,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 //
 //RaisedButton(onPressed: (){
 //_showChoice(context);
-//}, child: Text("Seletionner une image"),
+//}, child: Text('Seletionner une image'),
 //),
 //
 //
