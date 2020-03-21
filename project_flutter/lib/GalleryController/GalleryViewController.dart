@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project_flutter/splashscreen.dart';
-import 'package:project_flutter/gridView.dart';
 import 'dart:io';
-import 'gridView.dart';
 
-class SecondRoute extends StatefulWidget {
+class GalleryViewController extends StatefulWidget {
   @override
-  _SecondRouteState createState() => _SecondRouteState();
+  _GalleryViewControllerState createState() => _GalleryViewControllerState();
 
 }
 
-class _SecondRouteState extends State<SecondRoute> {
+class _GalleryViewControllerState extends State<GalleryViewController> {
 
 
   File imageFile;
@@ -68,22 +65,7 @@ class _SecondRouteState extends State<SecondRoute> {
     }
   }
 
-  Widget ProfileView() {
-    //TODO
-    return Column (
-      children: <Widget>[
-        Text("Hi User"),
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: NetworkImage(
-            "https://i.imgur.com/qlxHxqW.jpg"
-          ),
-        backgroundColor: Colors.transparent,
-        ),
-      ],
-    );
 
-  }
 
 
 
@@ -97,7 +79,6 @@ class _SecondRouteState extends State<SecondRoute> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              ProfileView(),
               _runImageView(),
               RaisedButton(onPressed: (){
 

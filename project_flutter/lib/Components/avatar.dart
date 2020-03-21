@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_flutter/pictureView.dart';
 
 const List<String> kAssets = ['koala.jpg', 'koala2.png'];
 
@@ -21,10 +20,7 @@ class _AvatarState extends State<Avatar> {
       backgroundColor: Colors.transparent,
       child: FlatButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SecondRoute()),
-          );
+
           setState(() {
             _clickState = !_clickState;
           });

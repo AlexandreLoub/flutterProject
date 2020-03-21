@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_flutter/splashscreen.dart';
+import 'package:project_flutter/AccountController/LoginViewController.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,15 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: LoginViewController(),
     );
   }
 }
-
-//return Text(Provider)
-//end widjet build
-//return Text(Provider.of<Data>(context).value)
