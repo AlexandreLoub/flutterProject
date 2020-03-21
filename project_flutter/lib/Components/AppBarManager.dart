@@ -31,6 +31,7 @@ class _AppBarManagerState extends State<AppBarManager> {
     return Scaffold(
       appBar: AppBar(
         title: Text('MyGalleryApp'),
+        backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
       ),
 

@@ -5,11 +5,9 @@ import 'dart:io';
 class GalleryViewController extends StatefulWidget {
   @override
   _GalleryViewControllerState createState() => _GalleryViewControllerState();
-
 }
 
 class _GalleryViewControllerState extends State<GalleryViewController> {
-
   List<File> test = [];
   File imageFile;
 
@@ -23,7 +21,6 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
     Navigator.of(context).pop();
   }
 
-
   _openCamera(BuildContext context) async {
     var picture = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
@@ -34,30 +31,34 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   }
 
   Future<void> _showChoice(BuildContext context) {
-    return showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Make Choice"),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              GestureDetector(
-                child: Text("Gallery"),
-                onTap: (){
-                  _openGallery(context);
-                  },
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Make Choice"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text("Gallery"),
+                    onTap: () {
+                      _openGallery(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                  ),
+                  GestureDetector(
+                    child: Text("Camera"),
+                    onTap: () {
+                      _openCamera(context);
+                    },
+                  ),
+                ],
               ),
-              Padding(padding: EdgeInsets.all(8.0),),
-              GestureDetector(
-                child: Text("Camera"),
-                onTap: (){
-                  _openCamera(context);
-                  },
-              ),
-            ],
-          ),
-        ),
-      );
-    });
+            ),
+          );
+        });
   }
 
   Widget _runImageView() {
@@ -68,52 +69,54 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
     }
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
+        padding: EdgeInsets.all(4),
         child: Column(
           children: <Widget>[
             Expanded(
-              child: ListView.builder(
-                itemCount: test.length,
-            itemBuilder: (BuildContext context, int Index) {
-              return Image.file(test[Index]);
-      }
-        )
+                child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 4.0,
+                        mainAxisSpacing: 4.0),
+                    itemCount: test.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Image.file(
+                        test[index],
+                        fit: BoxFit.fill,
+                      );
+                    })
+//                child: ListView.builder(
+//                    itemCount: test.length,
+//                    itemBuilder: (BuildContext context, int Index) {
+//                      return Image.file(test[Index]);
+//                    })
+                ),
+            Container(
+              padding: EdgeInsets.only(top: 4),
+              width: double.infinity,
 
-            ),
-            FlatButton(
-              color: Colors.blueAccent,
+              height: 40,
+              child: FlatButton(
 
-              padding: EdgeInsets.only(
-                left: 10,
-                right: 20,
-                top: 1,
-                bottom: 2,
+                textColor: Colors.white,
+                color: Colors.blueAccent,
+                padding: EdgeInsets.all(0),
+                child: Text('Take pictures'),
+                onPressed: () {
+                  _showChoice(context);
+                },
               ),
-              child: Text("ee"),
-              onPressed: () {
-                _showChoice(context);
-              },
-            )
+            ),
           ],
         ),
-
-
-
-
-
       ),
-
     );
   }
-
-  }
+}
 
 //
 //child: Center(
