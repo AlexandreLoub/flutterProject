@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'CustomTextStyles.dart';
+import 'PostRequestManager.dart';
 import 'TextFieldDelegate.dart';
-
 
 Widget createUserForm(bool loginForm) {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -34,8 +34,11 @@ Widget createUserForm(bool loginForm) {
                     )),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    print(
-                        'do request with $emailController $passwordController');
+                    loginForm
+                        ? makePostRequest('login', emailController.text,
+                            passwordController.text)
+                        : makePostRequest('register', emailController.text,
+                            passwordController.text);
                   }
                   return;
 
