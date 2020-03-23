@@ -30,9 +30,12 @@ Widget myTextFormField(
             ? validateEmail(value)
             : validatePassword(value);
       },
+      style: TextStyle(color: Colors.white70),
+      cursorColor: Colors.white,
       controller: controller,
       obscureText: hideText,
       decoration: InputDecoration(
+
         focusColor: Colors.white,
         border: const OutlineInputBorder(),
         enabledBorder:
