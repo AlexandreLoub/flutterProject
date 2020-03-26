@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
+import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
 import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
 import 'package:project_flutter/Components/TextFieldsForms/SplashScreenHeader.dart';
 import 'package:project_flutter/Components/TextFieldsForms/UserRegisterationForm.dart';
@@ -30,11 +31,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
                     fontWeight: FontWeight.normal,
                   )),
               onTap: () {
-                Navigator.push<dynamic>(
-                  context,
-                  MaterialPageRoute<dynamic>(
-                      builder: (BuildContext context) => LoginViewController()),
-                );
+                pushThisViewWithoutAnimate(context, LoginViewController());
               },
             ),
           ],

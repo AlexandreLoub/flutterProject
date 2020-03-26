@@ -1,3 +1,4 @@
+import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
 import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
@@ -49,12 +50,7 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
                           color: Colors.black,
                           child: const Text('Logout'),
                           onPressed: () {
-                            Navigator.push<dynamic>(
-                              context,
-                              MaterialPageRoute<dynamic>(
-                                  builder: (BuildContext context) =>
-                                      LoginViewController()),
-                            );
+                            pushThisViewWithoutAnimate(context, LoginViewController());
                           },
                         ),
                       ),
