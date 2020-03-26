@@ -1,3 +1,4 @@
+import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -16,28 +17,48 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
       body: StoreConnector<AppState, AppState>(
           converter: (Store<AppState> store) => store.state,
           builder: (BuildContext context, AppState state) {
-            return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage:
-                        NetworkImage('http://${state.imageURL.toString()}'),
-                  ),
-                  Text('${state.email.toString()}'),
-                  FlatButton(
-                    onPressed: () {
-                      print('logout presed');
-                      Navigator.push<dynamic>(
-                        context,
-                        MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) =>
-                                LoginViewController()),
-                      );
-                    },
-                    child: const Text('Logout'),
-                  ),
-                ]);
+            return Container(
+                width: double.infinity,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(top: 20),
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(
+                              'http://${state.imageURL.toString()}'),
+                        ),
+                      ),
+                      Expanded(
+                          child: Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              child: Text(
+                                  'Welcome !\nYour email is ${state.email.toString()}',
+                                  textAlign: TextAlign.center,
+                                  style: basicTextStyle.copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  )))),
+                      Container(
+                        margin: const EdgeInsets.all(4),
+                        width: double.infinity,
+                        height: 36,
+                        child: FlatButton(
+                          textColor: Colors.white,
+                          color: Colors.black,
+                          child: const Text('Logout'),
+                          onPressed: () {
+                            Navigator.push<dynamic>(
+                              context,
+                              MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) =>
+                                      LoginViewController()),
+                            );
+                          },
+                        ),
+                      ),
+                    ]));
           }),
     );
   }

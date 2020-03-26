@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:project_flutter/Components/AppStateRedux.dart';
+import 'package:project_flutter/Components/PostRequestManager.dart';
 import 'package:redux/redux.dart';
 import 'CustomTextStyles.dart';
-import 'PostRequestManager.dart';
 import 'TextFieldDelegate.dart';
 
 Widget createUserForm(bool loginForm, BuildContext context) {

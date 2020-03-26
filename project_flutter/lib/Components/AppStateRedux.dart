@@ -7,7 +7,6 @@ class User {
 class UserEmail {
   UserEmail(this.email);
   final String email;
-
 }
 
 class UserImageURL {
@@ -27,7 +26,7 @@ AppState reducer(AppState prevState, dynamic action) {
 
 class AppState {
   AppState(
-      {this.email = '', this.imageURL = ''});
+      {this.email = 'undefined Email', this.imageURL = 'undefined Image'});
   AppState.fromAppState(AppState another) {
     email = another.email;
     imageURL = another.imageURL;

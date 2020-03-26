@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
-import 'package:project_flutter/Components/SplashScreenHeader.dart';
-import 'package:project_flutter/Components/UserRegisterationForm.dart';
+import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
+import 'package:project_flutter/Components/TextFieldsForms/SplashScreenHeader.dart';
+import 'package:project_flutter/Components/TextFieldsForms/UserRegisterationForm.dart';
 
 class RegisterViewController extends StatefulWidget {
   @override
@@ -42,10 +43,3 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
     );
   }
 }
-
-final TextStyle basicTextStyle = TextStyle(
-  fontFamily: 'Source Sans Pro',
-  color: Colors.teal.shade100,
-  fontSize: 15,
-  fontWeight: FontWeight.bold,
-);

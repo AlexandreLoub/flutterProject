@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/AccountController/RegisterViewController.dart';
-import 'package:project_flutter/Components/SplashScreenHeader.dart';
-import 'package:project_flutter/Components/UserRegisterationForm.dart';
+import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
+import 'package:project_flutter/Components/TextFieldsForms/SplashScreenHeader.dart';
+import 'package:project_flutter/Components/TextFieldsForms/UserRegisterationForm.dart';
 
 class LoginViewController extends StatefulWidget {
   @override

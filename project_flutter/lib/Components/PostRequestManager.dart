@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart';
+import 'package:project_flutter/Components/Alerts/AlertManager.dart';
 import 'package:project_flutter/Components/AppStateRedux.dart';
 import 'AppBarManager.dart';
 
@@ -16,7 +17,8 @@ Future<void> makePostRequest(String requestFor, String email, String password,
   final int statusCode = response.statusCode;
   if (statusCode != 200) {
     print('Request Failed with status $statusCode');
-    return;
+    sendAlert('This user does not exist please create an account', context);
+   return;
   }
   final Map<String, dynamic> map = jsonDecode(response.body);
   final User user = User(map['email'], map['profilePic']);
@@ -24,7 +26,7 @@ Future<void> makePostRequest(String requestFor, String email, String password,
   try {
     StoreProvider.of<AppState>(context).dispatch(UserImageURL(user.image));
   } catch (e) {
-    print(e);
+    sendAlert(e, context);
     return;
   }
 
