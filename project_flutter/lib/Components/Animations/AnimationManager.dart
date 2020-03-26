@@ -1,6 +1,5 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:project_flutter/AccountController/RegisterViewController.dart';
 import 'package:project_flutter/Components/AppBarManager.dart';
 import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
 

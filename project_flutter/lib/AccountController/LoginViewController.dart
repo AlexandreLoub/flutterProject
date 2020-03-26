@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/AccountController/RegisterViewController.dart';
 import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
-import 'package:project_flutter/Components/AppBarManager.dart';
 import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
 import 'package:project_flutter/Components/TextFieldsForms/SplashScreenHeader.dart';
 import 'package:project_flutter/Components/TextFieldsForms/UserRegisterationForm.dart';

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:project_flutter/GalleryController/GalleryViewController.dart';
 import 'package:project_flutter/ProfileController/ProfileViewController.dart';
