@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 List<Widget> splashScreenHeader() {
-
-  return <Widget>[Text(
-    'My Beatiful Gallery',
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 35,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Pacifico',
+  return <Widget>[
+    Text(
+      'My Beatiful Gallery',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 35,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Pacifico',
+      ),
     ),
-  ),
     Text(
       'STORE YOUR PICTURES',
       style: TextStyle(
@@ -26,5 +26,6 @@ List<Widget> splashScreenHeader() {
       child: Divider(
         color: Colors.teal.shade100,
       ),
-    )];
+    )
+  ];
 }

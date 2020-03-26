@@ -10,7 +10,6 @@ class RegisterViewController extends StatefulWidget {
 
 class _RegisterViewControllerState extends State<RegisterViewController> {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
@@ -18,13 +17,10 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //Avatar(),
             splashScreenHeader()[0],
             splashScreenHeader()[1],
             splashScreenHeader()[2],
-
             createUserForm(false, context),
-
             InkWell(
               child: Text('Already got an account ?\nClick here to login',
                   textAlign: TextAlign.center,

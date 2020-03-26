@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class GalleryViewController extends StatefulWidget {
   @override
   _GalleryViewControllerState createState() => _GalleryViewControllerState();
@@ -12,8 +11,9 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   List<File> test = <File>[];
   File imageFile;
 
-  Future<void>_openGallery(BuildContext context) async {
-    final File picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+  Future<void> _openGallery(BuildContext context) async {
+    final File picture =
+        await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       imageFile = picture;
       test.add(picture);
@@ -23,7 +23,8 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   }
 
   Future<void> _openCamera(BuildContext context) async {
-    final File picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    final File picture =
+        await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       imageFile = picture;
       test.add(picture);
@@ -62,14 +63,6 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
         });
   }
 
-//  Widget _runImageView() {
-//    if (imageFile == null) {
-//      return const Text("Pas d'image selectionnée");
-//    } else {
-//      return Image.file(imageFile, width: 400, height: 400);
-//    }
-//  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,35 +72,28 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
           children: <Widget>[
             Expanded(
                 child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 4.0),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 4.0,
+                            mainAxisSpacing: 4.0),
                     itemCount: test.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                          child: Image.file(
-                        test[index],
-                        fit: BoxFit.fill,
-                          ),
+                        child: Image.file(
+                          test[index],
+                          fit: BoxFit.fill,
+                        ),
                         onTap: () {
-                            print(index);
+                          print(index);
                         },
                       );
-                    })
-//                child: ListView.builder(
-//                    itemCount: test.length,
-//                    itemBuilder: (BuildContext context, int Index) {
-//                      return Image.file(test[Index]);
-//                    })
-                ),
+                    })),
             Container(
               padding: const EdgeInsets.only(top: 4),
               width: double.infinity,
-
               height: 40,
               child: FlatButton(
-
                 textColor: Colors.white,
                 color: Colors.blueAccent,
                 padding: const EdgeInsets.all(0),
@@ -123,35 +109,3 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
     );
   }
 }
-
-//
-//child: Center(
-//child: Column(
-////mainAxisAlignment: MainAxisAlignment.spaceAround,
-//children: <Widget>[
-//_runImageView(),
-//ListView.builder(
-//scrollDirection: Axis.vertical,
-//itemCount: test.length,
-//itemBuilder: (BuildContext context, int index)  {
-//if (test != null) {
-//return Image.file(test[index]);
-//}
-//return Flexible(child: new ListView(
-//padding: new EdgeInsets.symmetric(vertical: 8.0),
-//children: <Widget>[
-//Text('zozo')
-//],
-//)
-//);
-//}
-//),
-//
-//RaisedButton(onPressed: (){
-//_showChoice(context);
-//}, child: Text('Seletionner une image'),
-//),
-//
-//
-//],
-//),

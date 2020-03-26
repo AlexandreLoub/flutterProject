@@ -35,7 +35,6 @@ Widget myTextFormField(
       controller: controller,
       obscureText: hideText,
       decoration: InputDecoration(
-
         focusColor: Colors.white,
         border: const OutlineInputBorder(),
         enabledBorder:
