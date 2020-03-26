@@ -5,8 +5,7 @@ import 'package:http/http.dart';
 import 'package:project_flutter/Components/Alerts/AlertManager.dart';
 import 'package:project_flutter/Components/Animations/AnimationManager.dart';
 import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
-import 'package:project_flutter/Components/AppStateRedux.dart';
-import '../AppBarManager.dart';
+import 'package:project_flutter/Components/Redux/AppStateRedux.dart';
 
 Future<void> makePostRequest(String requestFor, String email, String password,
     BuildContext context) async {

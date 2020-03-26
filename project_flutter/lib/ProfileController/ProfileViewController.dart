@@ -1,10 +1,11 @@
+import 'dart:io';
 import 'package:project_flutter/Components/Animations/PushAnimationManager.dart';
 import 'package:project_flutter/Components/TextFieldsForms/CustomTextStyles.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
-import 'package:project_flutter/Components/AppStateRedux.dart';
+import 'package:project_flutter/Components/Redux/AppStateRedux.dart';
 
 class ProfileViewController extends StatefulWidget {
   @override
@@ -50,6 +51,7 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
                           color: Colors.black,
                           child: const Text('Logout'),
                           onPressed: () {
+                            state.imageList = <File>[];
                             pushThisViewWithoutAnimate(context, LoginViewController());
                           },
                         ),
