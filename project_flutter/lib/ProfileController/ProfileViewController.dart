@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:project_flutter/AccountController/LoginViewController.dart';
+import 'package:project_flutter/Components/PostRequestManager.dart';
+import 'package:provider/provider.dart';
+
+import '../main.dart';
 
 class ProfileViewController extends StatefulWidget {
   @override
@@ -10,16 +15,18 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
+      body: StoreConnector<AppState, AppState>(
+        converter: (store) => store.state,
+    builder: (context, state) {
+        return Column(
             mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          const CircleAvatar(
+           CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage('https://i.imgur.com/qlxHxqW.jpg'),
+                backgroundImage: NetworkImage('http://${state.imageURL.toString()}'),
                 //backgroundColor: Colors.transparent,
               ),
-          const Text(
-            'zizi'
+          Text(
+              '${state.email.toString()}'
           ),
           FlatButton(
             onPressed: () {
@@ -31,7 +38,7 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
             },
             child: const Text('Logout'),
           ),
-        ]),
+        ]);}
       ),
     );
   }

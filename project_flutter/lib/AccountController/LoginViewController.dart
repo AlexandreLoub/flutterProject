@@ -22,7 +22,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
             splashScreenHeader()[0],
             splashScreenHeader()[1],
             splashScreenHeader()[2],
-            createUserForm(true),
+            createUserForm(true, context),
 
             InkWell(
               child: Text('Create Account Now',

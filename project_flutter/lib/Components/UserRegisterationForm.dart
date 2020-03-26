@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import '../main.dart';
+import 'AppBarManager.dart';
 import 'CustomTextStyles.dart';
 import 'PostRequestManager.dart';
 import 'TextFieldDelegate.dart';
 
-Widget createUserForm(bool loginForm) {
+Widget createUserForm(bool loginForm, BuildContext context) {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -14,7 +17,9 @@ Widget createUserForm(bool loginForm) {
         children: <Widget>[
           myTextFormField('Email', false, emailController),
           myTextFormField('Password', true, passwordController),
-          Padding(
+    StoreConnector<AppState, AppState>(
+      converter: (store) => store.state,
+      builder: (context, state) { return Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 5,
             ),
@@ -34,22 +39,24 @@ Widget createUserForm(bool loginForm) {
                     )),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
+                    try {
+                      StoreProvider.of<AppState>(context)
+                          .dispatch(UserEmail(emailController.text));
+                    } catch (e) {
+                      print(e);
+                    }
                     loginForm
                         ? makePostRequest('login', emailController.text,
-                            passwordController.text)
+                            passwordController.text, context)
                         : makePostRequest('register', emailController.text,
-                            passwordController.text);
+                            passwordController.text, context);
                   }
-                  return;
 
-//                    Navigator.push<dynamic>(
-//                      context,
-//                      MaterialPageRoute<dynamic>(builder: (BuildContext context) => AppBarManager()),
-//                    );
+
                 },
               ),
             ),
-          ),
-        ],
+          );}
+    )],
       ));
 }

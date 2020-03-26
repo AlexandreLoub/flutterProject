@@ -23,7 +23,7 @@ class _RegisterViewControllerState extends State<RegisterViewController> {
             splashScreenHeader()[1],
             splashScreenHeader()[2],
 
-            createUserForm(false),
+            createUserForm(false, context),
 
             InkWell(
               child: Text('Already got an account ?\nClick here to login',

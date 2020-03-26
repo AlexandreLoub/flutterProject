@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/GalleryController/GalleryViewController.dart';
 import 'package:project_flutter/ProfileController/ProfileViewController.dart';
+import 'package:provider/provider.dart';
+
+import 'PostRequestManager.dart';
 
 class AppBarManager extends StatefulWidget {
   @override
