@@ -14,4 +14,4 @@ Then open the file `pubspec.yml` and click on the button `Packages get` in the t
 
 Et voilà !
 
-You can now start the app by clicking on the button ▶️ in android studio
+You can now start the app by clicking on the button ▶ in android studio
