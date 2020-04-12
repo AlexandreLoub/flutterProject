@@ -18,6 +18,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   Future<void> _openGallery(BuildContext context) async {
     final File picture =
         await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (picture == null) return;
     setState(() {
       try {
         StoreProvider.of<AppState>(context).dispatch(UserImages(picture));
@@ -32,6 +33,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   Future<void> _openCamera(BuildContext context) async {
     final File picture =
         await ImagePicker.pickImage(source: ImageSource.camera);
+    if (picture == null) return;
     setState(() {
       try {
         StoreProvider.of<AppState>(context).dispatch(UserImages(picture));
@@ -76,56 +78,62 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: StoreConnector<AppState, AppState>(
-            converter: (Store<AppState> store) => store.state,
-            builder: (BuildContext context, AppState state) {
-              return Container(
-                padding: const EdgeInsets.all(4),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                        child: GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    crossAxisSpacing: 4.0,
-                                    mainAxisSpacing: 4.0),
-                            itemCount: state.imageList.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return GestureDetector(
-                                child: Image.file(
-                                  state.imageList[index],
-                                  fit: BoxFit.fill,
-                                ),
-                                onTap: () {
-                                  print(index);
-                                  Navigator.push<dynamic>(
-                                      context,
-                                      SizeRoute(
-                                          page: ImageDetailsView(
-                                              picture:
-                                                  state.imageList[index])));
-                                },
-                              );
-                            })),
-                    Container(
-                      padding: const EdgeInsets.only(top: 4),
-                      width: double.infinity,
-                      height: 40,
-                      child: FlatButton(
-                        textColor: Colors.white,
-                        color: Colors.blueAccent,
-                        padding: const EdgeInsets.all(0),
-                        child: const Text('Take pictures'),
-                        onPressed: () {
-                          _showChoice(context);
-                        },
+    return WillPopScope(
+      child: Scaffold(
+          body: StoreConnector<AppState, AppState>(
+              converter: (Store<AppState> store) => store.state,
+              builder: (BuildContext context, AppState state) {
+                return Container(
+                  padding: const EdgeInsets.all(4),
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                          child: GridView.builder(
+                              gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 4.0,
+                                  mainAxisSpacing: 4.0),
+                              itemCount: state.imageList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return GestureDetector(
+                                  child: Image.file(
+                                    state.imageList[index],
+                                    fit: BoxFit.fill,
+                                  ),
+                                  onTap: () {
+                                    print(index);
+                                    Navigator.push<dynamic>(
+                                        context,
+                                        SizeRoute(
+                                            page: ImageDetailsView(
+                                                picture:
+                                                state.imageList[index])));
+                                  },
+                                );
+                              })),
+                      Container(
+                        padding: const EdgeInsets.only(top: 4),
+                        width: double.infinity,
+                        height: 40,
+                        child: FlatButton(
+                          textColor: Colors.white,
+                          color: Colors.blueAccent,
+                          padding: const EdgeInsets.all(0),
+                          child: const Text('Take pictures'),
+                          onPressed: () {
+                            _showChoice(context);
+                          },
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-            }));
+                    ],
+                  ),
+                );
+              })
+      ),
+      onWillPop: () {
+        return Future(() => false);
+      },
+    );
   }
 }

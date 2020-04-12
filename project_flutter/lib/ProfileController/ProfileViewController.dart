@@ -15,49 +15,54 @@ class ProfileViewController extends StatefulWidget {
 class _ProfileViewControllerState extends State<ProfileViewController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StoreConnector<AppState, AppState>(
-          converter: (Store<AppState> store) => store.state,
-          builder: (BuildContext context, AppState state) {
-            return Container(
-                width: double.infinity,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(
-                              'http://${state.imageURL.toString()}'),
+    return WillPopScope(
+      child: Scaffold(
+        body: StoreConnector<AppState, AppState>(
+            converter: (Store<AppState> store) => store.state,
+            builder: (BuildContext context, AppState state) {
+              return Container(
+                  width: double.infinity,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(top: 20),
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage: NetworkImage(
+                                'http://${state.imageURL.toString()}'),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                          child: Container(
-                              margin: const EdgeInsets.only(top: 20),
-                              child: Text(
-                                  'Welcome !\nYour email is ${state.email.toString()}',
-                                  textAlign: TextAlign.center,
-                                  style: basicTextStyle.copyWith(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                  )))),
-                      Container(
-                        margin: const EdgeInsets.all(4),
-                        width: double.infinity,
-                        height: 36,
-                        child: FlatButton(
-                          textColor: Colors.white,
-                          color: Colors.black,
-                          child: const Text('Logout'),
-                          onPressed: () {
-                            state.imageList = <File>[];
-                            pushThisViewWithoutAnimate(context, LoginViewController());
-                          },
+                        Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                child: Text(
+                                    'Welcome !\nYour email is ${state.email.toString()}',
+                                    textAlign: TextAlign.center,
+                                    style: basicTextStyle.copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal,
+                                    )))),
+                        Container(
+                          margin: const EdgeInsets.all(4),
+                          width: double.infinity,
+                          height: 36,
+                          child: FlatButton(
+                            textColor: Colors.white,
+                            color: Colors.black,
+                            child: const Text('Logout'),
+                            onPressed: () {
+                              state.imageList = <File>[];
+                              pushThisViewWithoutAnimate(context, LoginViewController());
+                            },
+                          ),
                         ),
-                      ),
-                    ]));
-          }),
+                      ]));
+            }),
+      ),
+      onWillPop: () {
+        return Future(() => false);
+      },
     );
   }
 }
