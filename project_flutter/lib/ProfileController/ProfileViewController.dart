@@ -61,7 +61,7 @@ class _ProfileViewControllerState extends State<ProfileViewController> {
             }),
       ),
       onWillPop: () {
-        return Future(() => false);
+        return Future<bool>(() => false);
       },
     );
   }

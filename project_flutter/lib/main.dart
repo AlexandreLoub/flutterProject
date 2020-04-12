@@ -4,9 +4,11 @@ import 'package:project_flutter/AccountController/LoginViewController.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'Components/Redux/AppStateRedux.dart';
+import 'Components/RequestHTTP/GetRequestManager.dart';
 
 void main() {
   final AppState _initialState = AppState(imageList: <File>[]);
+  makeGetRequest('ping');
   final Store<AppState> _store =
       Store<AppState>(reducer, initialState: _initialState);
   runApp(MyApp(store: _store));

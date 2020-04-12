@@ -18,7 +18,8 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   Future<void> _openGallery(BuildContext context) async {
     final File picture =
         await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (picture == null) return;
+    if (picture == null)
+      return;
     setState(() {
       try {
         StoreProvider.of<AppState>(context).dispatch(UserImages(picture));
@@ -33,7 +34,8 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
   Future<void> _openCamera(BuildContext context) async {
     final File picture =
         await ImagePicker.pickImage(source: ImageSource.camera);
-    if (picture == null) return;
+    if (picture == null)
+      return;
     setState(() {
       try {
         StoreProvider.of<AppState>(context).dispatch(UserImages(picture));
@@ -132,7 +134,7 @@ class _GalleryViewControllerState extends State<GalleryViewController> {
               })
       ),
       onWillPop: () {
-        return Future(() => false);
+        return Future<bool>(() => false);
       },
     );
   }

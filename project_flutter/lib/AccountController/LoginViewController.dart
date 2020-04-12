@@ -39,7 +39,7 @@ class _LoginViewControllerState extends State<LoginViewController> {
         ),
       ),
       onWillPop: () {
-        return Future(() => false);
+        return Future<bool>(() => false);
       },
     );
   }
